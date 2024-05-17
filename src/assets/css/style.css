@@ -1,0 +1,35 @@
+.form {
+    background-color: #b4b9c640;
+    border: solid 1px black;
+}
+
+.form2 {
+    background-color: #eceef9;
+}
+
+.nav {
+    background: #dbdbdb;
+    margin-right: 469px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+.list-group-item {
+    background-color: #212529 !important;
+    color: white !important;
+}
+
+.list-group-horizontal li {
+    border: none;
+}
+
+.hidden{
+    display: none;
+}
+
+.show{
+    display:inline;
+}
+
+.table:hover{
+    cursor: pointer;    
+}

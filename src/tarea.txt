@@ -1,0 +1,14 @@
+Crear una proyecto en vite de React con los siguientes requerimientos:
+
+1) Saludar a la persona que escriba su nombre en una caja de texto.
+
+Renderizar saludo en un div o p
+
+2) Escribir 2 numeros en una caja de texto cada uno 
+
+    1) suma 
+    2) resta 
+
+Renderizar el resultado en un div
+
+Subir repositorio de Github como entregable
