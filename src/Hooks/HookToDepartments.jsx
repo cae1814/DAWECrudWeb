@@ -16,7 +16,7 @@ export const HookToDepartments = () => {
         const { name, value } = event.target;
         setDataForm({ ...dataForm, [name]: value });
     }
-
+    
     const submitHandler = async (event) => {
         event.preventDefault();
         const url = "http://localhost:3000/departments";

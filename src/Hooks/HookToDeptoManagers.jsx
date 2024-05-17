@@ -24,7 +24,7 @@ export const HookToDeptoManagers = () => {
         const url = "http://localhost:3000/deptoManagers";
         const result = await axios.post(url, dataForm);
         const dataResult = (await result).data;
-
+        
         if (dataResult.obj_creado[0].id > 0) {
             document.getElementById("alertok").style.display='inline';
             document.getElementById("alertnok").style.display='none';

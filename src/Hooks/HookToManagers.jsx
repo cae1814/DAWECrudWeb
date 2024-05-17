@@ -12,7 +12,7 @@ export const HookToManagers = () => {
     );
 
     const [resultado, setResultado] = useState("");
-
+    
     const changeHandler = (event) => {
         const { name, value } = event.target;
         setDataForm({ ...dataForm, [name]: value });
@@ -33,7 +33,7 @@ export const HookToManagers = () => {
             document.getElementById("alertok").style.display='none';
         }
     }
-
+    
     return {
         dataForm,
         resultado,
