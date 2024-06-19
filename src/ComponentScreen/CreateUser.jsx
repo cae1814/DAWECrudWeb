@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { HookCreateUser } from '../Hooks/HookCreateUser';
 import logo from '../assets/img/logo.png'; // with import
 import '../assets/css/style.css';
-
+ 
 export const CreateUser = () => {
     const { changeHandler, submitHandler, changeHandlerImg, submitHandlerImg } = HookCreateUser("https://127.0.0.1/user/create");
     const [required, setRequired] = useState(true);
