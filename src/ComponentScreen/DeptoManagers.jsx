@@ -9,24 +9,25 @@ export const DeptoManagers = () => {
   const [dataUrl, setDataUrl] = useState([]);
   const [dataUrlEmp, setDataUrlEmp] = useState([]);
   const [dataUrlDep, setDataUrlDep] = useState([]);
+  const logInfo = window.localStorage.getItem('xinfodatax');
 
   const cargarData = async () => {
-    const url = `http://127.0.0.1:3000/deptoManagers`;
-    const result = await axios.get(url);
+    const url = `https://127.0.0.1/deptoManagers`;
+    const result = await axios.get(url, {headers: {'Authorization': `Bear ${logInfo}`}});
     const resultData = await result;
     setDataUrl(resultData.data);
   };
 
   const cargarDataEmp = async () => {
-    const urlEmp = `http://127.0.0.1:3000/employees`;
-    const resultEmp = await axios.get(urlEmp);
+    const urlEmp = `https://127.0.0.1/employees`;
+    const resultEmp = await axios.get(urlEmp, {headers: {'Authorization': `Bear ${logInfo}`}});
     const resultDataEmp = await resultEmp;
     setDataUrlEmp(resultDataEmp.data);
   };
 
   const cargarDataDep = async () => {
-    const urlDep = `http://127.0.0.1:3000/departments`;
-    const resultDep = await axios.get(urlDep);
+    const urlDep = `https://127.0.0.1/departments`;
+    const resultDep = await axios.get(urlDep, {headers: {'Authorization': `Bear ${logInfo}`}});
     const resultDataDep = await resultDep;
     setDataUrlDep(resultDataDep.data);
   };
@@ -46,48 +47,37 @@ export const DeptoManagers = () => {
       <div className="mt-2 ml-4">
         <nav className="nav nav-pills nav-fill">
           <ul className="nav nav-pills">
-            <li className="nav-item">
-              <a className="nav-link" href="/">
-              Home
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" aria-current="page" href="/employees">
-                Employees
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/departments">
-                Departments
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/managers">
-                Managers
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/salaries">
-                Salaries
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/titles">
-                Titles
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link active" href="/deptoManagers">
-                DeptoManagers
-              </a>
-            </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/"><i className='fa fa-home' style={{ fontSize: "19px" }}></i>&nbsp;Home</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/employees"><i className='fa fa-users' style={{ fontSize: "19px" }}></i>&nbsp;Employees</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/departments"><i className='fa fa-cogs' style={{ fontSize: "19px" }}></i>&nbsp;Departments</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/managers"><i className='fa fa-suitcase' style={{ fontSize: "19px" }}></i>&nbsp;Managers</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/salaries"><i className='fa fa-money' style={{ fontSize: "19px" }}></i>&nbsp;Salaries</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/titles"><i className='fa fa-graduation-cap' style={{ fontSize: "19px" }}></i>&nbsp;Titles</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link active" aria-current="page" href="/deptoManagers"><i className='fa fa-sitemap' style={{ fontSize: "19px" }}></i>&nbsp;DeptoManagers</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/login"><i className='fa fa-sign-out' style={{ fontSize: "19px" }}></i>&nbsp;Signout</a>
+              </li>
           </ul>
         </nav>
       </div>
       <div>
         <section className="container mt-4 mb-1 show" id="crud1">
           <div className="text-start" id="employees">
-            <h5>Create DeptoManagers</h5>
+            <h5><i className='fa fa-plus-circle' style={{ fontSize: "19px", color: "green" }}></i>&nbsp;Create DeptoManagers</h5>
           </div>
           <div
             className="border pt-3 px-3 col-sm-9 col-md-9 col-lg-9 form"
@@ -132,16 +122,14 @@ export const DeptoManagers = () => {
                 </div>
               </div>
               <div className="gap-2 mb-3">
-                <button type="submit" className="btn btn-primary">
-                  Guardar
-                </button>
+                <button type="submit" className="btn btn-primary btn-sm"><i className='fa fa-check-square' style={{ fontSize: "16px"}}></i>&nbsp;Save</button>
               </div>
               </form>
             <div className="hidden" id="alertok">
-              <div className="alert alert-success gap-2 mb-3" role="alert">Insert successfully into database.</div>
+              <div className="alert alert-success gap-2 mb-3" role="alert"><i className='fa fa-check-circle' style={{ fontSize: "19px" }}></i>&nbsp;Insert successfully into database.</div>
             </div>
             <div className="hidden" id="alertnok">
-              <div className="alert alert-danger" role="alert">Insert failed, please check your app logs.</div>
+              <div className="alert alert-danger" role="alert"><i className='fa fa-times' style={{ fontSize: "19px" }}></i>&nbsp;Insert failed, please check your app logs.</div>
               <br></br>
             </div>
           </div>
@@ -152,7 +140,7 @@ export const DeptoManagers = () => {
                 <h5>List DeptoManagers</h5>
               </div>
               <div className="col-sm-2 col-md-2 col-lg-2">
-                <button type="button" className="btn btn-success" id="refresh" onClick={load}> Refrescar </button>
+                <button type="button" className="btn btn-success btn-sm" id="refresh" onClick={load}><i className='fa fa-refresh' style={{ fontSize: "16px"}}></i>&nbsp;Refresh </button>
               </div>
             </div>
           </div>
@@ -168,7 +156,6 @@ export const DeptoManagers = () => {
                   <th scope="col">Hasta</th>
                   <th scope="col">Creado por</th>
                   <th scope="col">Creaci&oacute;n</th>
-                  <th></th>
                 </tr>
               </thead>
               <tbody>
@@ -182,15 +169,6 @@ export const DeptoManagers = () => {
                     <td> {item.hasta} </td>
                     <td> {item.creado_por} </td>
                     <td> {item.fecha_creacion} </td>
-                    <td>
-                      <button
-                        type="button"
-                        className="btn btn-danger"
-                        onClick={item.id}
-                      >
-                        Delete
-                      </button>
-                    </td>
                   </tr>
                 ))}
               </tbody>

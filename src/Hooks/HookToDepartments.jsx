@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 
 export const HookToDepartments = () => {
+    const logInfo = window.localStorage.getItem('xinfodatax');
 
     const [dataForm, setDataForm] = useState(
         {
@@ -19,8 +20,8 @@ export const HookToDepartments = () => {
     
     const submitHandler = async (event) => {
         event.preventDefault();
-        const url = "http://localhost:3000/departments";
-        const result = await axios.post(url, dataForm);
+        const url = "https://localhost/departments";
+        const result = await axios.post(url, dataForm, {headers: {'Authorization': `Bear ${logInfo}`}});
         const dataResult = (await result).data;
 
         if (dataResult.obj_creado[0].id > 0) {

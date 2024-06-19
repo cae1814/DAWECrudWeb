@@ -13,7 +13,8 @@ export const HookToTitles = () => {
     );
 
     const [resultado, setResultado] = useState("");
-
+    const logInfo = window.localStorage.getItem('xinfodatax');
+    
     const changeHandler = (event) => {
         const { name, value } = event.target;
         setDataForm({ ...dataForm, [name]: value });
@@ -21,8 +22,8 @@ export const HookToTitles = () => {
 
     const submitHandler = async (event) => {
         event.preventDefault();
-        const url = "http://localhost:3000/titles";
-        const result = await axios.post(url, dataForm);
+        const url = "https://localhost/titles";
+        const result = await axios.post(url, dataForm,{headers: {'Authorization': `Bear ${logInfo}`}});
         const dataResult = (await result).data;
 
         if (dataResult.obj_creado[0].id > 0) {

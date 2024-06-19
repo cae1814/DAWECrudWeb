@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import axios from 'axios'
 
 export const HookToEmployees = () => {
-
+    const logInfo = window.localStorage.getItem('xinfodatax');
+    
     const [dataForm, setDataForm] = useState(
         {
             nombres: "",
@@ -22,8 +23,8 @@ export const HookToEmployees = () => {
 
     const submitHandler = async (event) => {
         event.preventDefault();
-        const url = "http://localhost:3000/employees";
-        const result = await axios.post(url, dataForm);
+        const url = "https://127.0.0.1/employees";
+        const result = await axios.post(url, dataForm, {headers: {'Authorization': `Bear ${logInfo}`}});
         console.log(dataForm);
         const dataResult = (await result).data;
 
